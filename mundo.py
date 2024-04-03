@@ -1,6 +1,6 @@
 import numpy as np
 import random
-
+#random.seed(42)
 
 class Mundo:
     def __init__(self, linhas, colunas, estado=False, mundo=0):
@@ -11,22 +11,25 @@ class Mundo:
 
     def constroiMundo(self):
         self.mundo = np.full((self.linhas, self.colunas), self.estado, dtype=bool)
-        print(self.mundo)
+        #print(self.mundo)
         self.sujaMundo()
         print(self.mundo)
-
+        #print(self.mundo[0,0])
+        #print(self.mundo[1,1])
     def sujaMundo(self):
         for coluna in range(1, self.colunas):
             for linha in range(1, self.linhas):
 
                 # gerando se o local está limpo ou sujo:
                 local = random.choice([True, False])
-
+                
                 if local == True:
                     self.mundo[coluna, linha] = local
 
     def obterPosicao(self):
         return (self.linhas, self.colunas)
 
+    def printar_mundo(self):
+        print(self.mundo)
 
 
