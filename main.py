@@ -11,3 +11,4 @@ if __name__ == "__main__":
     print(agente_reativo_simples.log)
     print(teste.printar_mundo())
     
+    

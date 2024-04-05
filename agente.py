@@ -6,48 +6,61 @@ class Agente:
         self.pos = [0,0]
         self.pontuacao = pontuacao
         self.memoria = []
-        self.log = ""
+        self.log = f"CONSEQUENCIA, PONTOS GANHOS, BATERIA PERDIDA, PONTOS ATUAIS, BATERIA ATUAL, QTD SUJEIRA\n"
         self.mundo = mundo
         
     def mover_esquerda(self):
         if self.pos[1] - 1 < 0:
             self.pontuacao -= 1
             self.bateria -=1
-            self.log += f'Esq - Bateu na parede, -1, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n' #estado, pontos, bateria, pontos atuais, bateria atual
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Esq - Bateu na parede, {-1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n' #estado, pontos, bateria, pontos atuais, bateria atual
         else:
             self.pos[1] -= 1 
             self.bateria -=1
-            self.log += f'Andou para a esquerda, 0, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n'
+            self.pontuacao += 1
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Andou para a esquerda, {+1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n'
     
     def mover_direita(self):
         if self.pos[1] + 1 >= self.mundo.colunas:
             self.pontuacao -= 1
             self.bateria -=1
-            self.log += f'Dir -Bateu na parede, -1, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n' #estado, pontos, bateria, pontos atuais, bateria atual
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Dir - Bateu na parede,  {-1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n' #estado, pontos, bateria, pontos atuais, bateria atual
         else:
             self.pos[1] += 1 
             self.bateria -=1
-            self.log += f'Andou para a direita, 0, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n'
+            self.pontuacao += 1
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Andou para a direita, {+1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n'
     
     def mover_baixo(self):
         if self.pos[0] + 1 >= self.mundo.colunas:
             self.pontuacao -= 1
             self.bateria -=1
-            self.log += f'Baixo - Bateu na parede, -1, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n' #estado, pontos, bateria, pontos atuais, bateria atual
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Baixo - Bateu na parede,  {-1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n' #estado, pontos, bateria, pontos atuais, bateria atual
         else:
             self.pos[0] += 1 
             self.bateria -=1
-            self.log += f'Andou para baixo, 0, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n'
+            self.pontuacao += 1
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Andou para baixo, {+1}, {-1}, {self.pontuacao}, {self.bateria}, {suj_atual}\n'
+        
     
     def mover_cima(self):
         if self.pos[0] - 1 < 0:
             self.pontuacao -= 1
             self.bateria -=1
-            self.log += f'Cima - Bateu na parede, -1, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n' #estado, pontos, bateria, pontos atuais, bateria atual
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Cima - Bateu na parede,  {-1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n' #estado, pontos, bateria, pontos atuais, bateria atual
         else:
             self.pos[0] -= 1 
             self.bateria -=1
-            self.log += f'Andou para cima, 0, -1, pontuação atual:{self.pontuacao}, bateria atual:{self.bateria}\n'
+            self.pontuacao += 1
+            suj_atual = self.mundo.qtd_sujeira()
+            self.log += f'Andou para cima, {+1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n'
     
     #só uma funcao auxiliar pra testar se ta fzndo tudo direito
     def ver(self):

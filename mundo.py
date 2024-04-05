@@ -31,5 +31,9 @@ class Mundo:
 
     def printar_mundo(self):
         print(self.mundo)
+        
+    def qtd_sujeira(self):
+        qtd_suj = np.count_nonzero(self.mundo)
+        return qtd_suj
 
 
