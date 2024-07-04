@@ -2,9 +2,9 @@ from agente import Agente
 from mundo import Mundo
 from estatisticas import Stats
 
-teste = Mundo(10, 10)
+teste = Mundo(3, 3)
 teste.constroiMundo()
-agente_reativo_simples = Agente(teste, bateria=1000)
+agente_reativo_simples = Agente(teste, bateria=50)
 
 if __name__ == "__main__":
     #print(teste.printar_mundo())
