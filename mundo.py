@@ -1,4 +1,5 @@
 import numpy as np
+import json
 import random
 #random.seed(42)
 
@@ -8,7 +9,13 @@ class Mundo:
         self.colunas = colunas
         self.estado = estado
         self.mundo = mundo
-
+    
+    def importar_mundo(self, filename):
+        with open(filename, 'r') as f:
+            matriz_lista_de_json = json.load(f)
+        self.mundo = np.array(matriz_lista_de_json, dtype=bool)
+        
+            
     def constroiMundo(self):
         self.mundo = np.full((self.linhas, self.colunas), self.estado, dtype=bool)
         #print(self.mundo)
