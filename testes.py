@@ -10,8 +10,6 @@ agente_reativo = Agente(mundo, bateria=carga)
 def teste_agente(agente):
     while agente.bateria > 0:
         agente.limpar_reativo_modelo()
-    #print(agente_reativo_simples.log)
-    #print(mundo.printar_mundo())
     stats = Stats(agente=agente, mundo=mundo)
     
     df = stats.logs_to_df()
