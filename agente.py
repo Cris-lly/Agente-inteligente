@@ -90,10 +90,8 @@ class Agente:
             self.ultima_cond = f'Andou para a cima, {+1}, {-1},{self.pontuacao},{self.bateria}, {suj_atual}\n'
             self.log += self.ultima_cond
     
-    #só uma funcao auxiliar pra testar se ta fzndo tudo direito
     def ver(self):
-        return self.pos
-        #print(self.mundo.mundo[self.pos[0], self.pos[1]])
+        return self.pos    
     
     def limpar(self):
         x = self.pos[0]
@@ -111,19 +109,6 @@ class Agente:
         else:
             self.mover_direita()
         
-    def __aux_buscar_pos(self, pos):
-        for dicionario in self.memoria:
-            if dicionario["pos"] == pos:
-                return dicionario
-        return None
-    
-    def __aux_add_dict(self, pos):
-        return {"pos": pos,
-                "esq": None,
-                "dir": None,
-                "cima": None,
-                "baixo": None}
-    
     def verifica_bateria(self,):
         if self.bateria <= 0:
             self.acabou = True
@@ -133,13 +118,10 @@ class Agente:
         lista_acoes = ['mover_baixo', 'mover_cima', 'mover_esquerda','mover_direita']
         sorteio = random.randint(0,3)
         acao = lista_acoes[sorteio]
-        #print(acao)
         self.limpar()
         self.__aux_mov(acao)
         self.limpar()
-        #print(self.pos)
-        #print(self.ver())
-    # 431 4x4
+    
     
     def caracol_vertical(self,):
         self.limpar()
@@ -244,91 +226,4 @@ class Agente:
         except Exception as e:
             print(e)
             return
-                
-                    
-    
-    
-    
-    
-    
-    
-    
-    '''  
-    #random.seed(1)
-    def limpar_reativo_modelo(self):
-        if self.memoria == None:
-            movs = 0
-            lista_acoes = ['mover_baixo', 'mover_cima', 'mover_esquerda','mover_direita']
-            acao = random.choice(lista_acoes)
-            self.limpar()
-            self.__aux_mov(acao)
-            if self._verificar_bateu():
-                acao_excluir = []
-                while self._verificar_bateu():
-                    acao_excluir.append(acao)
-                    while True:
-                        acao = random.choice(lista_acoes)
-                        if acao not in acao_excluir:
-                            break
-                    self.__aux_mov(acao)
-                    self.limpar()
-            else:
-                movs +=1
-                while not self._verificar_bateu():
-                    self.limpar()
-                    self.__aux_mov(acao)
-                    movs+=1
-                self.memoria = movs
-        else:
-            acao = self._verificar_ultima_acao()
-            if acao == 'mover_direita':
-                self.__aux_mov('mover_baixo')
-                self.limpar
-                for _ in range (self.memoria-1):
-                    self.limpar()
-                    self.__aux_mov('mover_esquerda')
-            if acao == 'mover_esquerda':
-                self.__aux_mov('mover_baixo')
-                self.limpar
-                for _ in range (self.memoria-1):
-                    self.limpar()
-                    self.__aux_mov('mover_direita')
-            
-            
-        
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      
-    def limpar_reativo_modelo(self):
-        lista_acoes = ['mover_baixo', 'mover_cima', 'mover_esquerda','mover_direita']
-        acao = random.choice(lista_acoes)
-        print(acao)
-        self.limpar()
-        self.__aux_mov(acao)
-        self.limpar()
-        if not self._verificar_bateu():
-            while not self._verificar_bateu():
-                self.limpar()
-                self.__aux_mov(acao)
-                self.limpar()
-            if self._verificar_ultima_pos('dir'):
-                
-        else:
-            while self._verificar_bateu():
-                lista_acoes.remove(acao)
-                acao = random.choice(lista_acoes)
-                self.limpar()
-                self.__aux_mov(acao)
-                self.limpar()
-            '''
-                
-        
-               
+  
